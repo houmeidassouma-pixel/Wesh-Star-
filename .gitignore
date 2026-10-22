@@ -1,0 +1,9 @@
+node_modules
+.next
+dist
+build
+.env
+.env.local
+*.log
+tsconfig.tsbuildinfo
+Wesh-Star-IA-V36-Monetisation-Shop-Guide.zip

@@ -1,0 +1,786 @@
+{
+  "aria": {
+    "label": "Aria",
+    "language": "fr",
+    "locale": "fr_FR",
+    "model": "fr_FR-siwis-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "fr/fr_FR/siwis/medium"
+  },
+  "sarah": {
+    "label": "Sarah",
+    "language": "fr",
+    "locale": "fr_FR",
+    "model": "fr_FR-tom-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "fr/fr_FR/tom/medium"
+  },
+  "charlotte": {
+    "label": "Charlotte",
+    "language": "fr",
+    "locale": "fr_FR",
+    "model": "fr_FR-mls-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "fr/fr_FR/mls/medium"
+  },
+  "alice": {
+    "label": "Alice",
+    "language": "fr",
+    "locale": "fr_FR",
+    "model": "fr_FR-upmc-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "fr/fr_FR/upmc/medium"
+  },
+  "lisa": {
+    "label": "Lisa",
+    "language": "fr",
+    "locale": "fr_FR",
+    "model": "fr_FR-gilles-low.onnx",
+    "quality": "low",
+    "sourcePath": "fr/fr_FR/gilles/low"
+  },
+  "roger": {
+    "label": "Roger",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-lessac-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/lessac/medium"
+  },
+  "george": {
+    "label": "George",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-john-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/john/medium"
+  },
+  "liam": {
+    "label": "Liam",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-ryan-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/ryan/medium"
+  },
+  "jonas": {
+    "label": "Jonas",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-thorsten-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "de/de_DE/thorsten/medium"
+  },
+  "tom": {
+    "label": "Tom",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-thorsten-high.onnx",
+    "quality": "high",
+    "sourcePath": "de/de_DE/thorsten/high"
+  },
+  "nini": {
+    "label": "Nini",
+    "language": "fr",
+    "locale": "fr_FR",
+    "model": "fr_FR-siwis-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "fr/fr_FR/siwis/medium"
+  },
+  "felix": {
+    "label": "Felix",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-karlsson-low.onnx",
+    "quality": "low",
+    "sourcePath": "de/de_DE/karlsson/low"
+  },
+  "erich": {
+    "label": "Erich",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-thorsten_emotional-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "de/de_DE/thorsten_emotional/medium"
+  },
+  "grete": {
+    "label": "Grete",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-kerstin-low.onnx",
+    "quality": "low",
+    "sourcePath": "de/de_DE/kerstin/low"
+  },
+  "river": {
+    "label": "River",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-sam-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/sam/medium"
+  },
+  "sam": {
+    "label": "Sam",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-sam-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/sam/medium"
+  },
+  "fr_fr_siwis_medium": {
+    "label": "Siwis",
+    "language": "fr",
+    "locale": "fr_FR",
+    "model": "fr_FR-siwis-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "fr/fr_FR/siwis/medium"
+  },
+  "fr_fr_gilles_low": {
+    "label": "Gilles",
+    "language": "fr",
+    "locale": "fr_FR",
+    "model": "fr_FR-gilles-low.onnx",
+    "quality": "low",
+    "sourcePath": "fr/fr_FR/gilles/low"
+  },
+  "fr_fr_mls_medium": {
+    "label": "MLS French",
+    "language": "fr",
+    "locale": "fr_FR",
+    "model": "fr_FR-mls-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "fr/fr_FR/mls/medium"
+  },
+  "fr_fr_mls_1840_low": {
+    "label": "MLS 1840",
+    "language": "fr",
+    "locale": "fr_FR",
+    "model": "fr_FR-mls_1840-low.onnx",
+    "quality": "low",
+    "sourcePath": "fr/fr_FR/mls_1840/low"
+  },
+  "fr_fr_tom_medium": {
+    "label": "Tom",
+    "language": "fr",
+    "locale": "fr_FR",
+    "model": "fr_FR-tom-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "fr/fr_FR/tom/medium"
+  },
+  "fr_fr_upmc_medium": {
+    "label": "UPMC",
+    "language": "fr",
+    "locale": "fr_FR",
+    "model": "fr_FR-upmc-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "fr/fr_FR/upmc/medium"
+  },
+  "de_de_thorsten_medium": {
+    "label": "Thorsten",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-thorsten-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "de/de_DE/thorsten/medium"
+  },
+  "de_de_thorsten_high": {
+    "label": "Thorsten HD",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-thorsten-high.onnx",
+    "quality": "high",
+    "sourcePath": "de/de_DE/thorsten/high"
+  },
+  "de_de_eva_k_x_low": {
+    "label": "Eva K",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-eva_k-x_low.onnx",
+    "quality": "x_low",
+    "sourcePath": "de/de_DE/eva_k/x_low"
+  },
+  "de_de_karlsson_low": {
+    "label": "Karlsson",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-karlsson-low.onnx",
+    "quality": "low",
+    "sourcePath": "de/de_DE/karlsson/low"
+  },
+  "de_de_kerstin_low": {
+    "label": "Kerstin",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-kerstin-low.onnx",
+    "quality": "low",
+    "sourcePath": "de/de_DE/kerstin/low"
+  },
+  "de_de_mls_medium": {
+    "label": "MLS German",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-mls-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "de/de_DE/mls/medium"
+  },
+  "de_de_pavoque_low": {
+    "label": "Pavoque",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-pavoque-low.onnx",
+    "quality": "low",
+    "sourcePath": "de/de_DE/pavoque/low"
+  },
+  "de_de_ramona_low": {
+    "label": "Ramona",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-ramona-low.onnx",
+    "quality": "low",
+    "sourcePath": "de/de_DE/ramona/low"
+  },
+  "de_de_thorsten_emotional_medium": {
+    "label": "Thorsten Emotional",
+    "language": "de",
+    "locale": "de_DE",
+    "model": "de_DE-thorsten_emotional-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "de/de_DE/thorsten_emotional/medium"
+  },
+  "en_gb_alan_medium": {
+    "label": "Alan",
+    "language": "en",
+    "locale": "en_GB",
+    "model": "en_GB-alan-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_GB/alan/medium"
+  },
+  "en_gb_alba_medium": {
+    "label": "Alba",
+    "language": "en",
+    "locale": "en_GB",
+    "model": "en_GB-alba-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_GB/alba/medium"
+  },
+  "en_gb_aru_medium": {
+    "label": "Aru",
+    "language": "en",
+    "locale": "en_GB",
+    "model": "en_GB-aru-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_GB/aru/medium"
+  },
+  "en_gb_cori_medium": {
+    "label": "Cori",
+    "language": "en",
+    "locale": "en_GB",
+    "model": "en_GB-cori-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_GB/cori/medium"
+  },
+  "en_gb_cori_high": {
+    "label": "Cori HD",
+    "language": "en",
+    "locale": "en_GB",
+    "model": "en_GB-cori-high.onnx",
+    "quality": "high",
+    "sourcePath": "en/en_GB/cori/high"
+  },
+  "en_gb_jenny_dioco_medium": {
+    "label": "Jenny Dioco",
+    "language": "en",
+    "locale": "en_GB",
+    "model": "en_GB-jenny_dioco-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_GB/jenny_dioco/medium"
+  },
+  "en_gb_northern_english_male_medium": {
+    "label": "Northern English Male",
+    "language": "en",
+    "locale": "en_GB",
+    "model": "en_GB-northern_english_male-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_GB/northern_english_male/medium"
+  },
+  "en_gb_semaine_medium": {
+    "label": "Semaine",
+    "language": "en",
+    "locale": "en_GB",
+    "model": "en_GB-semaine-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_GB/semaine/medium"
+  },
+  "en_us_amy_medium": {
+    "label": "Amy",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-amy-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/amy/medium"
+  },
+  "en_us_arctic_medium": {
+    "label": "Arctic",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-arctic-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/arctic/medium"
+  },
+  "en_us_bryce_medium": {
+    "label": "Bryce",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-bryce-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/bryce/medium"
+  },
+  "en_us_danny_low": {
+    "label": "Danny",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-danny-low.onnx",
+    "quality": "low",
+    "sourcePath": "en/en_US/danny/low"
+  },
+  "en_us_hfc_female_medium": {
+    "label": "HFC Female",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-hfc_female-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/hfc_female/medium"
+  },
+  "en_us_hfc_male_medium": {
+    "label": "HFC Male",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-hfc_male-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/hfc_male/medium"
+  },
+  "en_us_joe_medium": {
+    "label": "Joe",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-joe-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/joe/medium"
+  },
+  "en_us_john_medium": {
+    "label": "John",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-john-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/john/medium"
+  },
+  "en_us_kathleen_low": {
+    "label": "Kathleen",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-kathleen-low.onnx",
+    "quality": "low",
+    "sourcePath": "en/en_US/kathleen/low"
+  },
+  "en_us_kristin_medium": {
+    "label": "Kristin",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-kristin-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/kristin/medium"
+  },
+  "en_us_kusal_medium": {
+    "label": "Kusal",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-kusal-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/kusal/medium"
+  },
+  "en_us_l2arctic_medium": {
+    "label": "L2 Arctic",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-l2arctic-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/l2arctic/medium"
+  },
+  "en_us_lessac_medium": {
+    "label": "Lessac",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-lessac-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/lessac/medium"
+  },
+  "en_us_lessac_high": {
+    "label": "Lessac HD",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-lessac-high.onnx",
+    "quality": "high",
+    "sourcePath": "en/en_US/lessac/high"
+  },
+  "en_us_libritts_high": {
+    "label": "LibriTTS",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-libritts-high.onnx",
+    "quality": "high",
+    "sourcePath": "en/en_US/libritts/high"
+  },
+  "en_us_libritts_r_medium": {
+    "label": "LibriTTS-R",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-libritts_r-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/libritts_r/medium"
+  },
+  "en_us_ljspeech_medium": {
+    "label": "LJ Speech",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-ljspeech-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/ljspeech/medium"
+  },
+  "en_us_norman_medium": {
+    "label": "Norman",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-norman-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/norman/medium"
+  },
+  "en_us_ryan_medium": {
+    "label": "Ryan",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-ryan-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/ryan/medium"
+  },
+  "en_us_ryan_high": {
+    "label": "Ryan HD",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-ryan-high.onnx",
+    "quality": "high",
+    "sourcePath": "en/en_US/ryan/high"
+  },
+  "en_us_sam_medium": {
+    "label": "Sam",
+    "language": "en",
+    "locale": "en_US",
+    "model": "en_US-sam-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "en/en_US/sam/medium"
+  },
+  "es_ar_daniela_high": {
+    "label": "Daniela",
+    "language": "es",
+    "locale": "es_AR",
+    "model": "es_AR-daniela-high.onnx",
+    "quality": "high",
+    "sourcePath": "es/es_AR/daniela/high"
+  },
+  "es_es_carlfm_x_low": {
+    "label": "CarlFM",
+    "language": "es",
+    "locale": "es_ES",
+    "model": "es_ES-carlfm-x_low.onnx",
+    "quality": "x_low",
+    "sourcePath": "es/es_ES/carlfm/x_low"
+  },
+  "es_es_davefx_medium": {
+    "label": "DaveFX",
+    "language": "es",
+    "locale": "es_ES",
+    "model": "es_ES-davefx-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "es/es_ES/davefx/medium"
+  },
+  "es_es_mls_10246_low": {
+    "label": "MLS 10246",
+    "language": "es",
+    "locale": "es_ES",
+    "model": "es_ES-mls_10246-low.onnx",
+    "quality": "low",
+    "sourcePath": "es/es_ES/mls_10246/low"
+  },
+  "es_es_mls_9972_low": {
+    "label": "MLS 9972",
+    "language": "es",
+    "locale": "es_ES",
+    "model": "es_ES-mls_9972-low.onnx",
+    "quality": "low",
+    "sourcePath": "es/es_ES/mls_9972/low"
+  },
+  "es_es_sharvard_medium": {
+    "label": "Sharvard",
+    "language": "es",
+    "locale": "es_ES",
+    "model": "es_ES-sharvard-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "es/es_ES/sharvard/medium"
+  },
+  "es_mx_ald_medium": {
+    "label": "Ald",
+    "language": "es",
+    "locale": "es_MX",
+    "model": "es_MX-ald-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "es/es_MX/ald/medium"
+  },
+  "es_mx_claude_high": {
+    "label": "Claude",
+    "language": "es",
+    "locale": "es_MX",
+    "model": "es_MX-claude-high.onnx",
+    "quality": "high",
+    "sourcePath": "es/es_MX/claude/high"
+  },
+  "it_it_paola_medium": {
+    "label": "Paola",
+    "language": "it",
+    "locale": "it_IT",
+    "model": "it_IT-paola-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "it/it_IT/paola/medium"
+  },
+  "it_it_riccardo_x_low": {
+    "label": "Riccardo",
+    "language": "it",
+    "locale": "it_IT",
+    "model": "it_IT-riccardo-x_low.onnx",
+    "quality": "x_low",
+    "sourcePath": "it/it_IT/riccardo/x_low"
+  },
+  "pt_br_cadu_medium": {
+    "label": "Cadu",
+    "language": "pt",
+    "locale": "pt_BR",
+    "model": "pt_BR-cadu-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "pt/pt_BR/cadu/medium"
+  },
+  "pt_br_edresson_low": {
+    "label": "Edresson",
+    "language": "pt",
+    "locale": "pt_BR",
+    "model": "pt_BR-edresson-low.onnx",
+    "quality": "low",
+    "sourcePath": "pt/pt_BR/edresson/low"
+  },
+  "pt_br_faber_medium": {
+    "label": "Faber",
+    "language": "pt",
+    "locale": "pt_BR",
+    "model": "pt_BR-faber-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "pt/pt_BR/faber/medium"
+  },
+  "pt_br_jeff_medium": {
+    "label": "Jeff",
+    "language": "pt",
+    "locale": "pt_BR",
+    "model": "pt_BR-jeff-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "pt/pt_BR/jeff/medium"
+  },
+  "pt_pt_tugao_medium": {
+    "label": "Tugão",
+    "language": "pt",
+    "locale": "pt_PT",
+    "model": "pt_PT-tugao-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "pt/pt_PT/tugao/medium"
+  },
+  "nl_be_nathalie_medium": {
+    "label": "Nathalie",
+    "language": "nl",
+    "locale": "nl_BE",
+    "model": "nl_BE-nathalie-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "nl/nl_BE/nathalie/medium"
+  },
+  "nl_be_rdh_medium": {
+    "label": "RDH",
+    "language": "nl",
+    "locale": "nl_BE",
+    "model": "nl_BE-rdh-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "nl/nl_BE/rdh/medium"
+  },
+  "nl_nl_mls_medium": {
+    "label": "MLS Dutch",
+    "language": "nl",
+    "locale": "nl_NL",
+    "model": "nl_NL-mls-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "nl/nl_NL/mls/medium"
+  },
+  "nl_nl_mls_5809_low": {
+    "label": "MLS 5809",
+    "language": "nl",
+    "locale": "nl_NL",
+    "model": "nl_NL-mls_5809-low.onnx",
+    "quality": "low",
+    "sourcePath": "nl/nl_NL/mls_5809/low"
+  },
+  "nl_nl_pim_medium": {
+    "label": "Pim",
+    "language": "nl",
+    "locale": "nl_NL",
+    "model": "nl_NL-pim-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "nl/nl_NL/pim/medium"
+  },
+  "nl_nl_ronnie_medium": {
+    "label": "Ronnie",
+    "language": "nl",
+    "locale": "nl_NL",
+    "model": "nl_NL-ronnie-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "nl/nl_NL/ronnie/medium"
+  },
+  "pl_pl_darkman_medium": {
+    "label": "Darkman",
+    "language": "pl",
+    "locale": "pl_PL",
+    "model": "pl_PL-darkman-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "pl/pl_PL/darkman/medium"
+  },
+  "pl_pl_gosia_medium": {
+    "label": "Gosia",
+    "language": "pl",
+    "locale": "pl_PL",
+    "model": "pl_PL-gosia-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "pl/pl_PL/gosia/medium"
+  },
+  "pl_pl_mc_speech_medium": {
+    "label": "MC Speech",
+    "language": "pl",
+    "locale": "pl_PL",
+    "model": "pl_PL-mc_speech-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "pl/pl_PL/mc_speech/medium"
+  },
+  "pl_pl_mls_6892_low": {
+    "label": "MLS 6892",
+    "language": "pl",
+    "locale": "pl_PL",
+    "model": "pl_PL-mls_6892-low.onnx",
+    "quality": "low",
+    "sourcePath": "pl/pl_PL/mls_6892/low"
+  },
+  "ru_ru_denis_medium": {
+    "label": "Denis",
+    "language": "ru",
+    "locale": "ru_RU",
+    "model": "ru_RU-denis-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "ru/ru_RU/denis/medium"
+  },
+  "ru_ru_dmitri_medium": {
+    "label": "Dmitri",
+    "language": "ru",
+    "locale": "ru_RU",
+    "model": "ru_RU-dmitri-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "ru/ru_RU/dmitri/medium"
+  },
+  "ru_ru_irina_medium": {
+    "label": "Irina",
+    "language": "ru",
+    "locale": "ru_RU",
+    "model": "ru_RU-irina-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "ru/ru_RU/irina/medium"
+  },
+  "ru_ru_ruslan_medium": {
+    "label": "Ruslan",
+    "language": "ru",
+    "locale": "ru_RU",
+    "model": "ru_RU-ruslan-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "ru/ru_RU/ruslan/medium"
+  },
+  "ar_jo_kareem_medium": {
+    "label": "Kareem",
+    "language": "ar",
+    "locale": "ar_JO",
+    "model": "ar_JO-kareem-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "ar/ar_JO/kareem/medium"
+  },
+  "hi_in_pratham_medium": {
+    "label": "Pratham",
+    "language": "hi",
+    "locale": "hi_IN",
+    "model": "hi_IN-pratham-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "hi/hi_IN/pratham/medium"
+  },
+  "hi_in_priyamvada_medium": {
+    "label": "Priyamvada",
+    "language": "hi",
+    "locale": "hi_IN",
+    "model": "hi_IN-priyamvada-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "hi/hi_IN/priyamvada/medium"
+  },
+  "tr_tr_dfki_medium": {
+    "label": "DFKI",
+    "language": "tr",
+    "locale": "tr_TR",
+    "model": "tr_TR-dfki-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "tr/tr_TR/dfki/medium"
+  },
+  "zh_cn_huayan_medium": {
+    "label": "Huayan",
+    "language": "zh",
+    "locale": "zh_CN",
+    "model": "zh_CN-huayan-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "zh/zh_CN/huayan/medium"
+  },
+  "sw_cd_lanfrica_medium": {
+    "label": "Lanfrica",
+    "language": "sw",
+    "locale": "sw_CD",
+    "model": "sw_CD-lanfrica-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "sw/sw_CD/lanfrica/medium"
+  },
+  "vi_vn_25hours_single_low": {
+    "label": "25Hours",
+    "language": "vi",
+    "locale": "vi_VN",
+    "model": "vi_VN-25hours_single-low.onnx",
+    "quality": "low",
+    "sourcePath": "vi/vi_VN/25hours_single/low"
+  },
+  "vi_vn_vais1000_medium": {
+    "label": "VAIS1000",
+    "language": "vi",
+    "locale": "vi_VN",
+    "model": "vi_VN-vais1000-medium.onnx",
+    "quality": "medium",
+    "sourcePath": "vi/vi_VN/vais1000/medium"
+  },
+  "vi_vn_vivos_x_low": {
+    "label": "VIVOS",
+    "language": "vi",
+    "locale": "vi_VN",
+    "model": "vi_VN-vivos-x_low.onnx",
+    "quality": "x_low",
+    "sourcePath": "vi/vi_VN/vivos/x_low"
+  }
+}

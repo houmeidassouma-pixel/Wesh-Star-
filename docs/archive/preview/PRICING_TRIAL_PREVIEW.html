@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wesh Star IA — Pricing Preview</title>
+<style>body{margin:0;background:#09090b;color:#f4f4f5;font:16px Arial,sans-serif}main{max-width:1100px;margin:40px auto;padding:20px}.hero{padding:28px;border:1px solid #27272a;border-radius:20px;background:#111113}.hero h1{margin:0 0 8px}.hero p{color:#a1a1aa}.free{margin-top:18px;padding:18px;border:1px solid #3f3f46;border-radius:16px;background:#18181b}.free b{color:#facc15}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:18px}.tier{border:1px solid #27272a;border-radius:14px;padding:14px;background:#111113}.tier:hover{border-color:#facc15}.m{font-size:20px;font-weight:700}.p{margin-top:5px;color:#a1a1aa}.c{margin-top:3px;color:#71717a;font-size:13px}.note{margin-top:24px;color:#a1a1aa;font-size:13px}</style></head>
+<body><main>
+<section class="hero"><h1>⭐ Wesh Star IA</h1><p>Tarification actuelle des essais et des crédits vidéo.</p>
+<div class="free"><b>GRATUIT — 2 essais à vie</b><br>Chaque compte peut générer <strong>2 vidéos maximum de 10 secondes</strong>. Après les 2 essais, un abonnement ou des crédits vidéo payants sont nécessaires.</div></section>
+<h2>🎬 Packs de quota de crédits — 1 à 30 minutes cumulées</h2><p>Chaque minute vaut <strong>60 crédits</strong>. Le prix de chaque pack est modifiable par l'administrateur.</p><div class="grid" id="tiers"></div>
+<p class="note">Cette grille concerne les crédits vidéo achetés à l'unité. Les abonnements mensuels ont leur propre quota et leur propre prix.</p>
+<script>const prices=Array.from({length:30},(_,i)=>Math.max(1,Math.ceil((i+1)/5)));document.getElementById('tiers').innerHTML=prices.map((p,i)=>{const m=i+1;return `<div class="tier"><div class="m">${m} min</div><div class="p">${p} €</div><div class="c">${m*60} crédits</div></div>`}).join('');</script>
+</main></body></html>

@@ -1,0 +1,10 @@
+"use client";
+import { useState } from "react";
+export default function SocialPerformancePanel({metrics}:{metrics:any[]}){
+ const [platform,setPlatform]=useState("all");
+ const rows=platform==="all"?metrics:metrics.filter(m=>m.platform===platform);
+ const grouped:Record<string,{count:number;sum:number;top:any}>={};
+ for(const m of rows){const g=grouped[m.platform] ||= {count:0,sum:0,top:m};g.count++;g.sum+=Number(m.score||0);if(Number(m.score||0)>Number(g.top.score||0))g.top=m;}
+ const summary=Object.entries(grouped).map(([platform,g])=>({platform,count:g.count,avg:Math.round(g.sum/g.count*100)/100,top:g.top})).sort((a,b)=>b.avg-a.avg);
+ return <section className="card animate-fade-up p-6"><div className="mb-4 flex flex-wrap items-center justify-between gap-3"><div><h2 className="font-bold">📈 Analyse des performances sociales</h2><p className="mt-1 text-xs text-zinc-500">Les métriques orientent les prochaines générations de l’Autopilot. Aucun contenu existant n’est copié.</p></div><select value={platform} onChange={e=>setPlatform(e.target.value)} className="input-sm"><option value="all">Toutes les plateformes</option>{["tiktok","facebook","instagram","snapchat","youtube","twitch","x","linkedin"].map(p=><option key={p} value={p}>{p}</option>)}</select></div>{!summary.length?<p className="py-8 text-center text-zinc-500">Aucune métrique importée pour le moment.</p>:<div className="overflow-x-auto"><table className="w-full min-w-[48rem] text-sm"><thead><tr className="border-b border-zinc-800 text-left text-xs uppercase tracking-wider text-zinc-500"><th className="py-2.5 pr-4">Plateforme</th><th className="pr-4">Publications analysées</th><th className="pr-4">Score moyen</th><th>Meilleur format observé</th></tr></thead><tbody>{summary.map(r=><tr key={r.platform} className="border-b border-zinc-800/50"><td className="py-2.5 pr-4 font-semibold">{r.platform}</td><td className="pr-4 text-zinc-400">{r.count}</td><td className="pr-4">{r.avg}</td><td className="text-zinc-400">{r.top.format_profile||"—"}{r.top.hook_style?" · "+r.top.hook_style:""}</td></tr>)}</tbody></table></div>}</section>;
+}

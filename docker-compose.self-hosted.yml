@@ -1,0 +1,154 @@
+# Wesh Star IA — full self-hosted stack.
+# Only the web app publishes a port. postgres, gpu-worker, tts-worker and
+# ollama are reachable ONLY on the internal compose network, and the two
+# workers additionally require the bearer token WESH_GPU_WORKER_TOKEN.
+# Required secrets have no default: `docker compose up` fails fast if unset.
+services:
+  wesh-ia-star:
+    build: .
+    ports:
+      - "3000:3000"
+    env_file: .env
+    environment:
+      ENABLE_FFMPEG: "true"
+      WESH_STORAGE_ROOT: "/app/storage"
+      SELF_HOSTED_PUBLIC_BASE_URL: "${SELF_HOSTED_PUBLIC_BASE_URL:-http://localhost:3000}"
+      WESH_STORAGE_SIGNING_SECRET: "${WESH_STORAGE_SIGNING_SECRET:?set WESH_STORAGE_SIGNING_SECRET in .env}"
+      SELF_HOSTED_VIDEO_URL: "http://gpu-worker:8001"
+      SELF_HOSTED_TTS_URL: "http://tts-worker:8002"
+      SELF_HOSTED_WORKER_TOKEN: "${WESH_GPU_WORKER_TOKEN:?set WESH_GPU_WORKER_TOKEN in .env}"
+      CRON_SECRET: "${CRON_SECRET:?set CRON_SECRET in .env (min 16 chars)}"
+      LLM_BACKEND: "${LLM_BACKEND:-ollama}"
+      OLLAMA_URL: "${OLLAMA_URL:-http://ollama:11434}"
+      OLLAMA_MODEL: "${OLLAMA_MODEL:-llama3.2:3b}"
+      PAYMENT_BACKEND: "${PAYMENT_BACKEND:-wesh_direct}"
+      DATABASE_URL: "postgresql://wesh:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}@postgres:5432/wesh_star"
+      SESSION_SECRET: "${SESSION_SECRET:?set SESSION_SECRET in .env (openssl rand -hex 32)}"
+      SMTP_HOST: "${SMTP_HOST:-}"
+      SMTP_PORT: "${SMTP_PORT:-587}"
+      SMTP_SECURE: "${SMTP_SECURE:-false}"
+      SMTP_USER: "${SMTP_USER:-}"
+      SMTP_PASS: "${SMTP_PASS:-}"
+      SMTP_FROM: "${SMTP_FROM:-Wesh Star IA <no-reply@wesh-ia-star.local>}"
+    depends_on:
+      gpu-worker:
+        condition: service_started
+      tts-worker:
+        condition: service_started
+      ollama-init:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+    volumes:
+      - wesh-ia-star-storage:/app/storage
+    restart: unless-stopped
+
+  # Triggers the video queue (retries included) every minute and the Autopilot
+  # every 30 minutes. Without it nothing ever processes the queue.
+  scheduler:
+    image: curlimages/curl:8.10.1
+    environment:
+      CRON_SECRET: "${CRON_SECRET:?set CRON_SECRET in .env (min 16 chars)}"
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        i=0
+        while true; do
+          curl -fsS -m 120 -H "Authorization: Bearer $$CRON_SECRET" http://wesh-ia-star:3000/api/worker/process >/dev/null || echo "process failed"
+          if [ $$((i % 30)) -eq 0 ]; then
+            curl -fsS -m 120 -H "Authorization: Bearer $$CRON_SECRET" http://wesh-ia-star:3000/api/worker/autopilot >/dev/null || echo "autopilot failed"
+          fi
+          if [ $$((i % 1440)) -eq 1 ]; then
+            curl -fsS -m 300 -X POST -H "Authorization: Bearer $$CRON_SECRET" http://wesh-ia-star:3000/api/worker/gift-proposals >/dev/null || echo "gift proposals failed"
+          fi
+          i=$$((i + 1)); sleep 60
+        done
+    depends_on:
+      - wesh-ia-star
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: wesh
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}"
+      POSTGRES_DB: wesh_star
+    volumes:
+      - wesh-ia-star-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wesh -d wesh_star"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    volumes:
+      - ollama-models:/root/.ollama
+    restart: unless-stopped
+
+  ollama-init:
+    image: ollama/ollama:latest
+    depends_on:
+      ollama:
+        condition: service_started
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+      OLLAMA_MODEL: "${OLLAMA_MODEL:-llama3.2:3b}"
+    entrypoint: ["/bin/sh", "-c"]
+    command: >-
+      "until ollama list >/dev/null 2>&1; do sleep 2; done;
+      ollama pull \"$${OLLAMA_MODEL}\""
+    volumes:
+      - ollama-models:/root/.ollama
+    restart: "no"
+
+  # One-shot: downloads the Piper voice pack into the shared models volume.
+  tts-init:
+    build: ./local-tts
+    working_dir: /
+    entrypoint: ["bash", "/app/install-models.sh", "core"]
+    volumes:
+      - wesh-tts-models:/models
+    restart: "no"
+
+  tts-worker:
+    build: ./local-tts
+    environment:
+      WESH_GPU_WORKER_TOKEN: "${WESH_GPU_WORKER_TOKEN:?set WESH_GPU_WORKER_TOKEN in .env}"
+      WESH_TTS_MODEL_DIR: /models
+      WESH_TTS_OUTPUT_DIR: /outputs
+    depends_on:
+      tts-init:
+        condition: service_completed_successfully
+    volumes:
+      - wesh-tts-models:/models
+      - wesh-tts-output:/outputs
+    restart: unless-stopped
+
+  gpu-worker:
+    build: ./gpu-worker
+    environment:
+      WESH_GPU_WORKER_TOKEN: "${WESH_GPU_WORKER_TOKEN:?set WESH_GPU_WORKER_TOKEN in .env}"
+      WESH_PUBLIC_BASE_URL: "http://gpu-worker:8001"
+      WESH_VIDEO_MODEL: "${WESH_VIDEO_MODEL:-Wan-AI/Wan2.1-T2V-1.3B-Diffusers}"
+      WESH_I2V_MODEL: "${WESH_I2V_MODEL:-Wan-AI/Wan2.1-I2V-14B-480P-Diffusers}"
+      WESH_ASSET_MODEL: "${WESH_ASSET_MODEL:-stabilityai/stable-diffusion-xl-base-1.0}"
+      WESH_ASSET_STEPS: "${WESH_ASSET_STEPS:-25}"
+      WESH_MAX_CONCURRENT: "${WESH_MAX_CONCURRENT:-1}"
+      WESH_STEPS: "${WESH_STEPS:-20}"
+    gpus: all
+    volumes:
+      - wesh-model-cache:/models
+      - wesh-video-output:/outputs
+    restart: unless-stopped
+
+volumes:
+  wesh-ia-star-storage:
+  wesh-ia-star-db:
+  wesh-model-cache:
+  wesh-video-output:
+  wesh-tts-models:
+  wesh-tts-output:
+  ollama-models:
