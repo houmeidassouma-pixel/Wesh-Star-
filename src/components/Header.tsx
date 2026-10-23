@@ -4,11 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { locales, localeNames } from "@/lib/dictionaries";
-import LogoutButton from "./LogoutButton";
 
 export default function Header({ t, lang, email, role }: any) {
   const router = useRouter();
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   const setLang = (v: string) => {
