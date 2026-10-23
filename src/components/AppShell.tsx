@@ -127,7 +127,7 @@ export default function AppShell({
         <span className="min-w-0 flex-1 truncate text-xs font-medium text-zinc-300">
           {email}
         </span>
-        <LogoutButton label="⏻" />
+        <LogoutButton label="⏻" title={t?.logout || "Logout"} ariaLabel={t?.logout || "Logout"} />
       </div>
     </div>
   );
