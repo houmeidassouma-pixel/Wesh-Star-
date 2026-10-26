@@ -8,7 +8,6 @@ import LogoutButton from "./LogoutButton";
 
 export default function Header({ t, lang, email, role }: any) {
   const router = useRouter();
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   const setLang = (v: string) => {
@@ -63,6 +62,7 @@ export default function Header({ t, lang, email, role }: any) {
           className="btn-ghost btn-md md:hidden"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
+          aria-expanded={open}
         >
           {open ? "✕" : "☰"}
         </button>
@@ -82,6 +82,7 @@ export default function Header({ t, lang, email, role }: any) {
             <select
               value={lang}
               onChange={(e) => { setLang(e.target.value); }}
+              aria-label={t.language}
               className="rounded-lg border border-zinc-800 bg-zinc-900 px-1.5 py-2 text-xs text-zinc-400"
             >
               {locales.map((l) => <option key={l} value={l}>{localeNames[l]}</option>)}
