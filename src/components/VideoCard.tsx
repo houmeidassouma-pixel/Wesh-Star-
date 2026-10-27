@@ -34,7 +34,12 @@ export default function VideoCard({ job, t, onChanged, communityEnabled = false 
     <>
       <div className="card-hover group overflow-hidden">
         {/* Thumbnail / placeholder */}
-        <button onClick={() => job.status === "done" && setOpen(true)} className="relative block aspect-video w-full bg-zinc-900 text-left">
+        <button
+          onClick={() => job.status === "done" && setOpen(true)}
+          aria-label={job.status === "done" ? `${t.watch || "Regarder"} : ${job.prompt}` : job.prompt}
+          title={job.status === "done" ? (t.watch || "Regarder") : undefined}
+          className="relative block aspect-video w-full bg-zinc-900 text-left"
+        >
           {job.status === "done" ? (
             <>
               <video preload="metadata" muted playsInline
@@ -90,7 +95,14 @@ export default function VideoCard({ job, t, onChanged, communityEnabled = false 
               <p className="mr-auto line-clamp-1 text-sm text-zinc-400">{job.prompt}</p>
               <a href={"/api/video/" + job.id + "?download=1"} download className="btn-primary btn-sm">⬇ {t.download}</a>
                 {communityEnabled && <PublishToWesh generationId={job.id} />}
-              <button onClick={() => setOpen(false)} className="btn-secondary btn-sm">✕</button>
+              <button
+                onClick={() => setOpen(false)}
+                aria-label={t.close || "Fermer"}
+                title={t.close || "Fermer"}
+                className="btn-secondary btn-sm"
+              >
+                ✕
+              </button>
             </div>
           </div>
         </div>
