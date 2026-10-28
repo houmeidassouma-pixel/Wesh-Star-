@@ -34,7 +34,12 @@ export default function VideoCard({ job, t, onChanged, communityEnabled = false 
     <>
       <div className="card-hover group overflow-hidden">
         {/* Thumbnail / placeholder */}
-        <button onClick={() => job.status === "done" && setOpen(true)} className="relative block aspect-video w-full bg-zinc-900 text-left">
+        <button
+          onClick={() => job.status === "done" && setOpen(true)}
+          className="relative block aspect-video w-full bg-zinc-900 text-left focus-visible:ring-2 focus-visible:ring-banana"
+          aria-label={job.status === "done" ? `${t.watch} - ${job.prompt}` : job.prompt}
+          disabled={job.status !== "done"}
+        >
           {job.status === "done" ? (
             <>
               <video preload="metadata" muted playsInline
@@ -68,15 +73,15 @@ export default function VideoCard({ job, t, onChanged, communityEnabled = false 
           <div className="mt-3 flex flex-wrap gap-2">
             {job.status === "done" && (
               <>
-                <button onClick={() => setOpen(true)} className="btn-secondary btn-sm">▶ {t.watch}</button>
-                <a href={"/api/video/" + job.id + "?download=1"} download className="btn-primary btn-sm">⬇ {t.download}</a>
+                <button onClick={() => setOpen(true)} className="btn-secondary btn-sm" aria-label={`${t.watch} ${job.prompt}`}>▶ {t.watch}</button>
+                <a href={"/api/video/" + job.id + "?download=1"} download className="btn-primary btn-sm" aria-label={`${t.download} ${job.prompt}`}>⬇ {t.download}</a>
                 {communityEnabled && <PublishToWesh generationId={job.id} />}
               </>
             )}
             {job.status === "failed" && (
-              <button onClick={() => act("retry")} disabled={busy} className="btn-secondary btn-sm">↻ {t.retry}</button>
+              <button onClick={() => act("retry")} disabled={busy} className="btn-secondary btn-sm" aria-label={`${t.retry} ${job.prompt}`}>↻ {t.retry}</button>
             )}
-            <button onClick={() => act("delete")} disabled={busy} className="btn-danger btn-sm">🗑 {t.delete}</button>
+            <button onClick={() => act("delete")} disabled={busy} className="btn-danger btn-sm" aria-label={`${t.delete} ${job.prompt}`}>🗑 {t.delete}</button>
           </div>
         </div>
       </div>
@@ -88,9 +93,9 @@ export default function VideoCard({ job, t, onChanged, communityEnabled = false 
             <video controls autoPlay className="w-full rounded-xl" src={"/api/video/" + job.id} />
             <div className="mt-3 flex flex-wrap items-center gap-2">
               <p className="mr-auto line-clamp-1 text-sm text-zinc-400">{job.prompt}</p>
-              <a href={"/api/video/" + job.id + "?download=1"} download className="btn-primary btn-sm">⬇ {t.download}</a>
+              <a href={"/api/video/" + job.id + "?download=1"} download className="btn-primary btn-sm" aria-label={`${t.download} ${job.prompt}`}>⬇ {t.download}</a>
                 {communityEnabled && <PublishToWesh generationId={job.id} />}
-              <button onClick={() => setOpen(false)} className="btn-secondary btn-sm">✕</button>
+              <button onClick={() => setOpen(false)} className="btn-secondary btn-sm" aria-label="Fermer la vidéo">✕</button>
             </div>
           </div>
         </div>
