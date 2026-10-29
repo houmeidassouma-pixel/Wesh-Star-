@@ -63,6 +63,7 @@ export default function Header({ t, lang, email, role }: any) {
           className="btn-ghost btn-md md:hidden"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
+          aria-expanded={open}
         >
           {open ? "✕" : "☰"}
         </button>
