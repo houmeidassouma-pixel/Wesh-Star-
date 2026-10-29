@@ -2,7 +2,13 @@
 
 export default function BlueToggle({ checked, onChange, label, description }: { checked: boolean; onChange: (v: boolean) => void; label: string; description?: string }) {
   return (
-    <button type="button" onClick={() => onChange(!checked)} className="flex w-full items-center justify-between gap-4 rounded-xl border border-blue-500/20 bg-blue-500/5 px-4 py-3 text-left hover:bg-blue-500/10">
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      onClick={() => onChange(!checked)}
+      className="flex w-full items-center justify-between gap-4 rounded-xl border border-blue-500/20 bg-blue-500/5 px-4 py-3 text-left hover:bg-blue-500/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/50"
+    >
       <span className="min-w-0">
         <span className="block text-sm font-semibold text-zinc-100">{label}</span>
         {description && <span className="mt-0.5 block text-xs text-zinc-500">{description}</span>}

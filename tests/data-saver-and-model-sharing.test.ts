@@ -27,3 +27,10 @@ test("login return destination rejects external redirect URLs", () => {
   const login = read("../src/components/LoginForm.tsx");
   assert.match(login, /requested\.startsWith\("\/"\) && !requested\.startsWith\("\/\/"\)/);
 });
+
+test("BlueToggle has proper accessibility switch role, aria-checked, and focus-visible attributes", () => {
+  const toggle = read("../src/components/BlueToggle.tsx");
+  assert.match(toggle, /role="switch"/);
+  assert.match(toggle, /aria-checked=\{checked\}/);
+  assert.match(toggle, /focus-visible:ring-2/);
+});
