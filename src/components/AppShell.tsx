@@ -204,6 +204,7 @@ export default function AppShell({
           className="btn-ghost btn-md p-2"
           onClick={() => setOpen(!open)}
           aria-label="Menu"
+          aria-expanded={open}
         >
           {open ? "✕" : "☰"}
         </button>

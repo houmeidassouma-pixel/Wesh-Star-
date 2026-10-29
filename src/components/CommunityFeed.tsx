@@ -123,7 +123,7 @@ export default function CommunityFeed({ initialPosts, currentUserId, adSlot = nu
             <div className="p-4">
               <div className="flex items-start gap-2">
                 <div className="min-w-0 flex-1">{p.promoted && <span className="mb-1 inline-flex rounded-full border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 text-[10px] font-bold text-amber-300">Sponsorisé</span>}<h2 className="truncate font-bold">{p.title}</h2><p className="flex items-center gap-1 text-xs text-zinc-500"><span className="truncate">@{p.handle || "créateur"}</span>{p.verified_badge && <VerifiedBadge />}</p></div>
-                <button className="text-xs text-zinc-400 hover:text-white" onClick={() => report(p.id)}>⚑</button>
+                <button className="text-xs text-zinc-400 hover:text-white" onClick={() => report(p.id)} aria-label="Signaler cette vidéo" title="Signaler cette vidéo">⚑</button>
               </div>
               {p.description && <p className="mt-2 line-clamp-3 text-sm text-zinc-400">{p.description}</p>}
               {p.sound_title && <div className="mt-2 flex flex-wrap items-center gap-2 rounded-lg bg-zinc-900/60 px-2 py-1.5 text-xs"><span className="min-w-0 flex-1 truncate text-zinc-300">♪ {p.sound_title}</span>{p.sound_reusable && <><button onClick={() => toggleSoundFav(p.sound_id)} className="text-amber-300 hover:text-amber-200">{p.sound_favorite ? "★ Favori" : "☆ Favori"}</button><a href={`/generate?sound=${p.sound_id}`} className="text-violet-300 hover:text-violet-200">🎬 Utiliser ce son</a></>}</div>}
@@ -152,7 +152,7 @@ export default function CommunityFeed({ initialPosts, currentUserId, adSlot = nu
               )}
               <div className="mt-3 flex gap-2">
                 <input value={comment[p.id] || ""} onChange={(e) => setComment((c) => ({ ...c, [p.id]: e.target.value }))} onKeyDown={(e) => { if (e.key === "Enter") sendComment(p.id); }} placeholder="Ajouter un commentaire…" className="input min-w-0 flex-1" />
-                <button onClick={() => sendComment(p.id)} className="btn-secondary btn-sm">↵</button>
+                <button onClick={() => sendComment(p.id)} aria-label="Publier le commentaire" title="Publier le commentaire" className="btn-secondary btn-sm">↵</button>
               </div>
             </div>
           </article>
