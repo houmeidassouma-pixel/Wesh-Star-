@@ -123,10 +123,10 @@ export default function CommunityFeed({ initialPosts, currentUserId, adSlot = nu
             <div className="p-4">
               <div className="flex items-start gap-2">
                 <div className="min-w-0 flex-1">{p.promoted && <span className="mb-1 inline-flex rounded-full border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 text-[10px] font-bold text-amber-300">Sponsorisé</span>}<h2 className="truncate font-bold">{p.title}</h2><p className="flex items-center gap-1 text-xs text-zinc-500"><span className="truncate">@{p.handle || "créateur"}</span>{p.verified_badge && <VerifiedBadge />}</p></div>
-                <button className="text-xs text-zinc-400 hover:text-white" onClick={() => report(p.id)}>⚑</button>
+                <button className="text-xs text-zinc-400 hover:text-white" onClick={() => report(p.id)} aria-label="Signaler cette vidéo" title="Signaler cette vidéo">⚑</button>
               </div>
               {p.description && <p className="mt-2 line-clamp-3 text-sm text-zinc-400">{p.description}</p>}
-              {p.sound_title && <div className="mt-2 flex flex-wrap items-center gap-2 rounded-lg bg-zinc-900/60 px-2 py-1.5 text-xs"><span className="min-w-0 flex-1 truncate text-zinc-300">♪ {p.sound_title}</span>{p.sound_reusable && <><button onClick={() => toggleSoundFav(p.sound_id)} className="text-amber-300 hover:text-amber-200">{p.sound_favorite ? "★ Favori" : "☆ Favori"}</button><a href={`/generate?sound=${p.sound_id}`} className="text-violet-300 hover:text-violet-200">🎬 Utiliser ce son</a></>}</div>}
+              {p.sound_title && <div className="mt-2 flex flex-wrap items-center gap-2 rounded-lg bg-zinc-900/60 px-2 py-1.5 text-xs"><span className="min-w-0 flex-1 truncate text-zinc-300">♪ {p.sound_title}</span>{p.sound_reusable && <><button onClick={() => toggleSoundFav(p.sound_id)} className="text-amber-300 hover:text-amber-200" aria-label={p.sound_favorite ? "Retirer ce son des favoris" : "Ajouter ce son aux favoris"}>{p.sound_favorite ? "★ Favori" : "☆ Favori"}</button><a href={`/generate?sound=${p.sound_id}`} className="text-violet-300 hover:text-violet-200" aria-label="Utiliser ce son pour créer une vidéo">🎬 Utiliser ce son</a></>}</div>}
               {p.user_id === currentUserId && <div className="mt-2">
                 <button onClick={() => remixPostId === p.id ? setRemixPostId(null) : openAddSound(p.id)} className="btn-secondary btn-sm">🎵 Ajouter un son à ma vidéo publiée</button>
                 {remixPostId === p.id && <div className="mt-2 rounded-lg border border-zinc-800 p-3 space-y-2">
@@ -135,11 +135,11 @@ export default function CommunityFeed({ initialPosts, currentUserId, adSlot = nu
                 </div>}
               </div>}
               <div className="mt-3 flex flex-wrap items-center gap-2">
-                <button onClick={() => like(p.id)} className={p.liked ? "btn-primary btn-sm" : "btn-secondary btn-sm"}>❤️ {p.likes}</button>
-                <button onClick={() => toggleComments(p.id)} className="text-xs text-zinc-500 hover:text-white">💬 {p.comments}</button>
+                <button onClick={() => like(p.id)} className={p.liked ? "btn-primary btn-sm" : "btn-secondary btn-sm"} aria-label={p.liked ? "Aimer cette vidéo (aimé)" : "Aimer cette vidéo"}>❤️ {p.likes}</button>
+                <button onClick={() => toggleComments(p.id)} className="text-xs text-zinc-500 hover:text-white" aria-expanded={!!openComments[p.id]} aria-label={`${p.comments} commentaires`}>💬 {p.comments}</button>
                 <button onClick={() => sharePost(p)} className="btn-secondary btn-sm" aria-label="Partager cette vidéo">↗ Partager</button>
-                {eco?.giftsEnabled && p.user_id !== currentUserId && <button onClick={() => setGiftFor(giftFor === p.id ? null : p.id)} className="btn-secondary btn-sm">🎁{p.gift_tokens > 0 ? ` ${p.gift_tokens}` : ""}</button>}
-                {p.user_id !== currentUserId && <button onClick={() => follow(p.user_id)} className="btn-secondary btn-sm ml-auto">{p.following ? "✓ Suivi" : "+ Suivre"}</button>}
+                {eco?.giftsEnabled && p.user_id !== currentUserId && <button onClick={() => setGiftFor(giftFor === p.id ? null : p.id)} className="btn-secondary btn-sm" aria-expanded={giftFor === p.id} aria-label="Envoyer un cadeau">🎁{p.gift_tokens > 0 ? ` ${p.gift_tokens}` : ""}</button>}
+                {p.user_id !== currentUserId && <button onClick={() => follow(p.user_id)} className="btn-secondary btn-sm ml-auto" aria-label={p.following ? "Ne plus suivre ce créateur" : "Suivre ce créateur"}>{p.following ? "✓ Suivi" : "+ Suivre"}</button>}
               </div>
               {giftFor === p.id && eco && <div className="mt-3 rounded-lg border border-zinc-800 p-2"><p className="mb-2 text-xs text-zinc-400">Solde : {eco.coins || 0} pièces 🪙 · {eco.creatorSharePct}% du cadeau va au créateur</p><div className="flex flex-wrap gap-2">{eco.gifts.map((g: any) => <button key={g.id} onClick={() => sendGift(p.id, g)} className="btn-secondary btn-sm">{g.animationUrl && /\.mp4(\?|$)/i.test(g.animationUrl) ? <video src={g.animationUrl} className="inline-block h-6 w-6 object-contain" autoPlay loop muted playsInline /> : g.imageUrl ? <img src={g.animationUrl || g.imageUrl} alt="" className="inline-block h-6 w-6 object-contain" /> : g.emoji} {g.name} · {g.tokens}🪙</button>)}</div></div>}
               {openComments[p.id] && (
@@ -151,8 +151,8 @@ export default function CommunityFeed({ initialPosts, currentUserId, adSlot = nu
                 </div>
               )}
               <div className="mt-3 flex gap-2">
-                <input value={comment[p.id] || ""} onChange={(e) => setComment((c) => ({ ...c, [p.id]: e.target.value }))} onKeyDown={(e) => { if (e.key === "Enter") sendComment(p.id); }} placeholder="Ajouter un commentaire…" className="input min-w-0 flex-1" />
-                <button onClick={() => sendComment(p.id)} className="btn-secondary btn-sm">↵</button>
+                <input value={comment[p.id] || ""} onChange={(e) => setComment((c) => ({ ...c, [p.id]: e.target.value }))} onKeyDown={(e) => { if (e.key === "Enter") sendComment(p.id); }} placeholder="Ajouter un commentaire…" aria-label="Ajouter un commentaire" className="input min-w-0 flex-1" />
+                <button onClick={() => sendComment(p.id)} className="btn-secondary btn-sm" aria-label="Envoyer le commentaire">↵</button>
               </div>
             </div>
           </article>
