@@ -11,8 +11,12 @@ export default function LogoutButton({ label }: { label: string }) {
     router.refresh();
   };
   return (
-    <button onClick={logout} title="Logout"
-      className="grid h-8 w-8 shrink-0 place-items-center rounded-lg text-zinc-500 transition-colors hover:bg-zinc-800 hover:text-red-400">
+    <button
+      onClick={logout}
+      title="Déconnexion"
+      aria-label="Déconnexion"
+      className="grid h-8 w-8 shrink-0 place-items-center rounded-lg text-zinc-500 transition-colors hover:bg-zinc-800 hover:text-red-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500/60"
+    >
       {label}
     </button>
   );
